@@ -1,0 +1,9 @@
+# problem: detect a tcp packet with:
+# Destination Port at 1080, TCPFLAG URG set, a string “hostip” in payload 10th byte-20th byte
+# alert message “TEST ALERT”
+
+# 导入所需文件
+include: <include file idshwk1.pcap>
+
+# Snort rule
+alert any any tcp -> any 1080 (flags: U; content: "hostip"; offset: 10; depth: 10;  msg: "TEST ALERT")
